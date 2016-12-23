@@ -5,12 +5,12 @@ Mock APNs / testing server supporting ssl connections.
 ## Setup
 Before you run the mock server you need to create a ssl certificate
 ```bash
-openssl req -new -x509 -keyout key -out cert -nodes
+openssl req -new -x509 -keyout private.pem -out cert.pem -nodes
 ```
 
 Make apnsmock runnable by doing:
 ```bash
-chmod a+x apnsmock
+chmod u+x apnsmock
 ```
 
 ## Usage
