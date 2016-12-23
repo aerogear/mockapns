@@ -2,13 +2,29 @@
 
 Mock APNs / testing server supporting ssl connections.
 
-#### Usage
-
+## Setup
+Before you run the mock server you need to create a ssl certificate
+```bash
+openssl req -new -x509 -keyout private -out private -nodes
 ```
-./apnsmock --help
+
+Converse it to DER format
+```bash
+openssl x509 -in private -out cert.crt -outform DER
 ```
 
-#### Requirements
+Make apnsmock runnable by doing:
+```bash
+chmod a+x apnsmock
+```
 
-* gevent
+## Usage
+Be sure you have the required dependencies:
+```
+pip install gevent
+```
+Then start up the server passing a valid ssl certificate's absolute path:
+```
+./apnsmock --cert "/absolute/path/to/private"
+```
 
