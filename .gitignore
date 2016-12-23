@@ -2,5 +2,5 @@
 *.pyc
 
 # Certificates
-cert.crt
-private
+key
+cert
