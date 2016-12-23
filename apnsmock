@@ -14,8 +14,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Mock APNS Service")
     parser.add_argument('--debug', action='store_true', help='Print debug messages')
     parser.add_argument('--cert', type=str, required=True, help="Absolute path to the certificate file")
-    parser.add_argument('--gatewayPort', type=int, default=DEFAULT_GATEWAY_PORT, help="Absolute path to the certificate file")
-    parser.add_argument('--feedbackPort', type=int, default=DEFAULT_FEEDBACK_PORT, help="Absolute path to the certificate file")
+    parser.add_argument('--key', type=str, required=True, help="Absolute path to the private key file")
+    parser.add_argument('--gatewayPort', type=int, default=DEFAULT_GATEWAY_PORT, help="The port where the server will be listening")
+    parser.add_argument('--feedbackPort', type=int, default=DEFAULT_FEEDBACK_PORT, help="The port for the feedback")
 
     args = parser.parse_args()
 
@@ -23,6 +24,7 @@ if __name__ == '__main__':
     logging.basicConfig(level=log_level)
 
     certPath = args.cert
+    keyPath = args.key
 
     gateway = MockGateway()
     feedback = MockFeedback(gateway.feedback)
@@ -30,8 +32,8 @@ if __name__ == '__main__':
     gatewayPort = args.gatewayPort
     feedbackPort = args.feedbackPort
 
-    gateway_server = StreamServer(('0.0.0.0', gatewayPort), gateway, keyfile=certPath, certfile=certPath)
-    feedback_server = StreamServer(('0.0.0.0', feedbackPort), feedback, keyfile=certPath, certfile=certPath)
+    gateway_server = StreamServer(('0.0.0.0', gatewayPort), gateway, keyfile=keyPath, certfile=certPath)
+    feedback_server = StreamServer(('0.0.0.0', feedbackPort), feedback, keyfile=keyPath, certfile=certPath)
 
     try:
         logging.info("Starting Feedback service listening on %s" % feedbackPort)
