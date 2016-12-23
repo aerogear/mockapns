@@ -1,1 +1,6 @@
+# Python binaries
 *.pyc
+
+# Certificates
+key
+cert
