@@ -1,6 +1,6 @@
 ### Mock APNs Server
 
-Mock APNs / testing server. Supports ssl connections, feedback service, and error responses.
+Mock APNs / testing server supporting ssl connections.
 
 #### Usage
 
