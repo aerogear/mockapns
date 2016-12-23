@@ -27,4 +27,4 @@ Then start up the server passing a valid ssl certificate's absolute path:
 ```
 ./apnsmock --cert "/absolute/path/to/private"
 ```
-
+> Warning: please mind that mock-apns will start up even if the path or certificate is wrong.
